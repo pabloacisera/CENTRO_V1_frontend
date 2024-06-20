@@ -1,0 +1,10 @@
+.tab-pane {
+  max-width: 600px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centrar el contenido horizontalmente */
+  text-align: justify;
+  padding-top: 10px;
+}
+
+.nav-tabs{
+  margin-top: 15px;
+}

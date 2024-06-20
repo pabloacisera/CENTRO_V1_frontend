@@ -1,0 +1,50 @@
+/* Estilos para el formulario */
+form {
+  max-width: 800px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centrado horizontal */
+  padding: 20px; /* Espacio interno */
+}
+
+fieldset {
+  border: 1px solid #ddd; /* Borde del fieldset */
+  padding: 20px;
+  margin-bottom: 20px; /* Espacio entre fieldsets */
+}
+
+legend {
+  font-size: 24px; /* Tamaño de la fuente para leyendas */
+  margin-bottom: 10px; /* Espacio bajo la leyenda */
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre columnas */
+  margin-bottom: 10px; /* Espacio bajo la fila */
+}
+
+.col-sm-2 {
+  flex: 0 0 20%; /* Ancho de columna fijo */
+}
+
+.col-sm-10 {
+  flex: 1; /* Columna flexible para ocupar el espacio restante */
+}
+
+.mt-4 {
+  margin-top: 1.5rem; /* Margen superior */
+}
+
+/* Estilos adicionales */
+textarea {
+  resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+.form-range {
+  width: 100%; /* Ancho completo para los rangos */
+}
+
+/* Ajuste para el botón en dispositivos pequeños */
+.btn-primary {
+  width: 100%; /* Botón de ancho completo */
+}

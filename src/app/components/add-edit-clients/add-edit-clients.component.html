@@ -1,0 +1,157 @@
+<form [formGroup]="formClient" (ngSubmit)="addclient()">
+  <fieldset>
+    <legend>Crear Ficha</legend>
+    <div>
+      <label for="name" class="form-label mt-4">Nombre:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="nameHelp"
+        placeholder="Ingrese nombre"
+        autofocus
+        formControlName="name"
+      />
+      @if(formClient.hasError('required') && formClient.touched){
+        <span>El campo nombre es requerido</span>
+      }
+    </div>
+    <div>
+      <label for="surname" class="form-label mt-4">Apellido:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="surname"
+        placeholder="Ingrese apellido"
+        formControlName="surname"
+      />
+      @if(formClient.hasError('required') && formClient.touched){
+        <span>El campo apellido es requerido</span>
+      }
+    </div>
+    <div>
+      <label for="exampleSecuritySocialNumber" class="form-label mt-4">DNI:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleSecuritySocialNumber"
+        placeholder="Ingrese DNI"
+        autocomplete="off"
+        formControlName="socialsecuritynumber"
+      />
+      @if(formClient.hasError('required') && formClient.touched){
+        <span>El campo DNI es requerido</span>
+      }
+    </div>
+    <div>
+      <label for="dateofbirth" class="form-label mt-4">Fecha de Nacimiento:</label>
+      <input
+        type="date"
+        class="form-control"
+        id="dateofbirth"
+        placeholder="Ingrese cumpleaños"
+        autocomplete="off"
+        formControlName="dateofbirth"
+        (blur)="CalculateAge()"
+      />
+      @if(formClient.hasError('required') && formClient.touched){
+        <span>El campo fecha de nacimiento es requerido</span>
+      }
+    </div>
+
+    <div>
+      <label for="age" class="form-label mt-4">Edad:</label>
+      <p id="age">{{ formClient.get('age')?.value ?? 'No se ha calculado la edad' }}</p>
+    </div>
+    
+
+    <div>
+      <label for="address" class="form-label mt-4">Direccion:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
+        placeholder="Ingrese direccion"
+        autofocus
+        formControlName="address"
+      />
+      @if(formClient.hasError('required') && formClient.touched){
+        <span>El campo direccion es requerido</span>
+      }
+    </div>
+    
+    <div>
+      <label for="location" class="form-label mt-4">Localidad:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        placeholder="Ingrese localidad"
+        autofocus
+        formControlName="location"
+      />
+    </div>
+
+    
+    <div>
+      <label for="phone" class="form-label mt-4">Telefono:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        placeholder="Ingrese telefono"
+        autofocus
+        formControlName="phone"
+      />
+    </div>
+
+    
+    <div>
+      <label for="email" class="form-label mt-4">Email:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Ingrese email"
+        autofocus
+        formControlName="email"
+      />
+      @if(formClient.hasError('required') && formClient.touched){
+        <span>El campo email es requerido</span>
+      }
+    </div>
+
+    <div>
+      <label for="healthinsurance" class="form-label mt-4">Obra Social:</label>
+      <select class="form-select" id="healthinsurance" formControlName="healthinsurance">
+        <option>Iapos</option>
+        <option>Osecac</option>
+        <option>Osde</option>
+        <option>Pami</option>
+        <option>Otro</option>
+      </select>
+      <small id="healthinsurance" class="form-text text-muted">
+        Si escoge la opción "otro" puede explicitar dicha referencia en la sección OBSERVACIÓN
+      </small>
+    </div>
+    <div>
+      <label for="Observation" class="form-label mt-4">Observación:</label>
+      <textarea
+        class="form-control"
+        id="Observation"
+        rows="5"
+        formControlName="observation"
+      ></textarea>
+    </div>
+    <div class="px-3">
+      <label for="formFile" class="form-label mt-4">Cargar archivos:</label>
+      <input
+        type="file"
+        class="form-control"
+        id="formFile"
+        formControlName="formFile"
+      />
+    </div>
+    <button type="submit" [disabled]="formClient.invalid" class="btn btn-primary mt-4">Guardar</button>
+  </fieldset>
+</form>
