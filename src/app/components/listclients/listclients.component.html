@@ -42,11 +42,10 @@
           ><font style="vertical-align: inherit">Acciones</font></font
         >
       </th>
-
     </tr>
   </thead>
   <tbody>
-    @for(client of clients; track client.name){
+    @for(client of listClients; track client.name){
     <tr class="table-light">
       <th scope="row">
         <font style="vertical-align: inherit"
@@ -70,7 +69,7 @@
       <td>
         <font style="vertical-align: inherit"
           ><font style="vertical-align: inherit">{{
-            client.dateofbirth
+            client.dateofbirth | dateFormat
           }}</font></font
         >
       </td>
@@ -86,14 +85,11 @@
       </td>
       <td>
         <button type="button" routerLink="/view">ver</button>
-        <button type="button" routerLink="/edit/{{client.id}}" >editar</button>
+        <button type="button" routerLink="/edit/{{ client.id }}">editar</button>
         <button>borrar</button>
         <button>cargar</button>
-      </td>      
+      </td>
     </tr>
-  }
+    }
   </tbody>
 </table>
-
-
-
