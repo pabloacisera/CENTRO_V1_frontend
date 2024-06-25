@@ -10,6 +10,10 @@ export class ClientService {
 
   constructor() {}
 
+  createClient(data: any) {
+    return axios.post('http://localhost:3000/api/v1/client', data);
+  }
+ 
   getAllClients() {
     return axios.get(`http://localhost:3000/api/v1/client`);
   }

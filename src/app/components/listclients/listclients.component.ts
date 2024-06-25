@@ -40,10 +40,10 @@ export class ListclientsComponent implements OnInit {
     })
   } 
 
-  deleteClient(id: number): void{
-    this._clientService.deleteClient(id).then(()=>{
+  deleteClient(id: number): void {
+    this._clientService.deleteClient(id).then(() => {
       this.getAllClients();
-      this.toastr.warning('Se han eliminado registros', 'Actualizcion de estado')
-    })
+      this.toastr.warning('Se han eliminado registros', 'Actualizacion de estado');
+    });
   }
 }

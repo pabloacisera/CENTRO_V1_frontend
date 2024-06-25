@@ -1,5 +1,5 @@
 export interface Clients {
-  id: number,
+  id?: number;
   name: string;
   surname: string;
   socialsecuritynumber: string;
@@ -10,7 +10,12 @@ export interface Clients {
   phone: string;
   email: string;
   healthinsurance: string;
-  observation: string;
-  formFile?: string; 
-  turno: string,
+  observation?: string;
+  turno?: string,
+}
+
+export interface Response {
+  id: number,
+  success: boolean,
+  message: string,
 }
