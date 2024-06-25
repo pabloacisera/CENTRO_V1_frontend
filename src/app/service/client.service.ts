@@ -11,7 +11,7 @@ export class ClientService {
   constructor() {}
 
   getAllClients() {
-    return axios.get(`${this.apiUrl}client`);
+    return axios.get(`http://localhost:3000/api/v1/client`);
   }
 
   getClientById(id: number) {
@@ -23,6 +23,7 @@ export class ClientService {
   }
 
   deleteClient(id: number) {
-    return axios.delete(`${this.apiUrl}client/${id}`);
+    return axios.delete(`http://localhost:3000/api/v1/client/${id}`);
   }
+
 }

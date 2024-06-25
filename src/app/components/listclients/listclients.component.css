@@ -23,3 +23,18 @@ button{
   margin-right: 5px;
   margin-top:3px;
 }
+
+
+.spinner {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px; /* Puedes ajustar esto según necesites */
+}
+
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
+  border-width: 0.3rem;
+}

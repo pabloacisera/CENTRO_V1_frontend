@@ -1,95 +1,56 @@
-<div class="titulo">
-  <h1>Listado de Pacientes</h1>
-  <button class="btn btn-primary" routerLink="/add">Nueva ficha</button>
-</div>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">Id</font></font
-        >
-      </th>
-      <th scope="col">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">Nombre y Apellido</font></font
-        >
-      </th>
-      <th scope="col">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">DNI</font></font
-        >
-      </th>
-      <th scope="col">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit"
-            >Fecha de Nacimiento</font
-          ></font
-        >
-      </th>
-      <th scope="col">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">Edad</font></font
-        >
-      </th>
-      <th scope="col">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">Telefono</font></font
-        >
-      </th>
-      <th scope="col">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">Acciones</font></font
-        >
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(client of listClients; track client.name){
-    <tr class="table-light">
-      <th scope="row">
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">{{ client.id }}</font></font
-        >
-      </th>
-      <td>
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit"
-            >{{ client.name }} {{ client.surname }}</font
-          ></font
-        >
-      </td>
-      <td>
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">{{
-            client.socialsecuritynumber
-          }}</font></font
-        >
-      </td>
-      <td>
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">{{
-            client.dateofbirth | dateFormat
-          }}</font></font
-        >
-      </td>
-      <td>
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">{{ client.age }}</font></font
-        >
-      </td>
-      <td>
-        <font style="vertical-align: inherit"
-          ><font style="vertical-align: inherit">{{ client.phone }}</font></font
-        >
-      </td>
-      <td>
-        <button type="button" routerLink="/view">ver</button>
-        <button type="button" routerLink="/edit/{{ client.id }}">editar</button>
-        <button>borrar</button>
-        <button>cargar</button>
-      </td>
-    </tr>
-    }
-  </tbody>
-</table>
+@if(isLoading){
+  <div class="spinner">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  } @if(!isLoading){
+  <div class="titulo">
+    <h1>Listado de Pacientes</h1>
+    <button class="btn btn-primary" routerLink="/add">Nueva ficha</button>
+  </div>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">
+          <font style="vertical-align: inherit">Id</font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit">Nombre y Apellido</font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit">DNI</font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit">Fecha de Nacimiento</font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit">Edad</font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit">Telefono</font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit">Acciones</font>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(client of listClients; track client.id) {
+        <tr>
+          <td>{{client.id}}</td>
+          <td>{{client.name}} {{client.surname}}</td>
+          <td>{{client.socialsecuritynumber}}</td>
+          <td>{{client.dateofbirth | dateFormat}}</td>
+          <td>{{client.age}}</td>
+          <td>{{client.phone}}</td>
+          <td>
+            <button type="button" (click)="deleteClient(client.id)" >Borrar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  }
+  
