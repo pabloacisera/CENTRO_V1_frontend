@@ -1,41 +1,41 @@
 <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="name">Name:</label>
+    <label for="name">Nombre:</label>
     <input id="name" formControlName="name" type="text">
   </div>
 
   <div>
-    <label for="surname">Surname:</label>
+    <label for="surname">Apellido:</label>
     <input id="surname" formControlName="surname" type="text">
   </div>
 
   <div>
-    <label for="ssn">Social Security Number:</label>
+    <label for="ssn">D.N.I:</label>
     <input id="ssn" formControlName="socialSecurityNumber" type="text">
   </div>
 
   <div>
-    <label for="dob">Date of Birth:</label>
+    <label for="dob">Fecha de Nacimiento:</label>
     <input id="dob" formControlName="dateOfbirth" type="date" (change)="onDateChange($event)">
   </div>
 
   <div>
-    <label for="age">Age:</label>
+    <label for="age">Edad:</label>
     <input id="age" formControlName="age" type="text" [attr.disabled]="true">
   </div>
 
   <div>
-    <label for="address">Address:</label>
+    <label for="address">Direccion:</label>
     <input id="address" formControlName="address" type="text">
   </div>
 
   <div>
-    <label for="location">Location:</label>
+    <label for="location">Ciudad:</label>
     <input id="location" formControlName="location" type="text">
   </div>
 
   <div>
-    <label for="phone">Phone:</label>
+    <label for="phone">Telefono:</label>
     <input id="phone" formControlName="phone" type="text">
   </div>
 
@@ -45,7 +45,7 @@
   </div>
 
   <div>
-    <label for="healthInsurance">Health Insurance:</label>
+    <label for="healthInsurance">Obra social:</label>
     <select id="healthInsurance" formControlName="healthInsurance">
       <option value="">SELECCIONAR</option>
       <option value="Iapos">Iapos</option>
@@ -57,7 +57,7 @@
   </div>
 
   <div>
-    <label for="observation">Observation:</label>
+    <label for="observation">Observaciones:</label>
     <input id="observation" formControlName="observation" type="text">
   </div>
 
@@ -67,9 +67,9 @@
   </div>
 
   <div>
-    <label for="formFile">Upload File:</label>
+    <label for="formFile">Subir archivo</label>
     <input id="formFile" type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx">
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="submit">Guardar ficha</button>
 </form>

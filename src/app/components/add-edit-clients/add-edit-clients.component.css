@@ -1,50 +1,46 @@
-/* Estilos para el formulario */
-form {
-  max-width: 800px; /* Ancho máximo del formulario */
-  margin: 0 auto; /* Centrado horizontal */
-  padding: 20px; /* Espacio interno */
-}
-
-fieldset {
-  border: 1px solid #ddd; /* Borde del fieldset */
-  padding: 20px;
-  margin-bottom: 20px; /* Espacio entre fieldsets */
-}
-
-legend {
-  font-size: 24px; /* Tamaño de la fuente para leyendas */
-  margin-bottom: 10px; /* Espacio bajo la leyenda */
-}
-
-.row {
+:host {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 20px; /* Espacio entre columnas */
-  margin-bottom: 10px; /* Espacio bajo la fila */
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.col-sm-2 {
-  flex: 0 0 20%; /* Ancho de columna fijo */
+form {
+  width: 700px;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.col-sm-10 {
-  flex: 1; /* Columna flexible para ocupar el espacio restante */
+form > div {
+  width: 45%; /* Ajustar el ancho de cada campo para crear dos columnas */
+  margin: 10px;
+  box-sizing: border-box;
 }
 
-.mt-4 {
-  margin-top: 1.5rem; /* Margen superior */
+form > div:nth-child(odd) {
+  margin-right: 5%;
 }
 
-/* Estilos adicionales */
-textarea {
-  resize: vertical; /* Permitir redimensionar verticalmente */
+form > div label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-.form-range {
-  width: 100%; /* Ancho completo para los rangos */
+form > div input,
+form > div select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
-/* Ajuste para el botón en dispositivos pequeños */
-.btn-primary {
-  width: 100%; /* Botón de ancho completo */
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
 }

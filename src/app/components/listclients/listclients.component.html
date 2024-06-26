@@ -46,7 +46,8 @@
           <td>{{client.age}}</td>
           <td>{{client.phone}}</td>
           <td>
-            <button type="button" (click)="deleteClient(client.id!)" >Borrar</button>
+            <button [routerLink]="['/view', client.id]">Ver</button>
+            <button (click)="deleteClient(client.id!)" >Borrar</button>
           </td>
         </tr>
       }

@@ -11,7 +11,7 @@ export const routes: Routes = [
     path:"add", component:AddEditClientsComponent
   },
   {
-    path:"view", component: ViewClientComponent
+    path:"view/:id", component: ViewClientComponent
   },
   {
     path:"edit/:id", component: AddEditClientsComponent

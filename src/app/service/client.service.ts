@@ -18,7 +18,7 @@ export class ClientService {
     return axios.get(`http://localhost:3000/api/v1/client`);
   }
 
-  getClientById(id: number) {
+  getClientById(id: number){
     return axios.get(`${this.apiUrl}client/${id}`);
   }
 

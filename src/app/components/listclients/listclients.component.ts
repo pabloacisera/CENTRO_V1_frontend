@@ -6,6 +6,7 @@ import { DateFormatPipe } from './date-format.pipe';
 import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router'
+import { ViewClientComponent } from '../view-client/view-client.component';
 
 @Component({
   selector: 'app-listclients',
@@ -14,6 +15,7 @@ import {Router} from '@angular/router'
     RouterLink,
     DateFormatPipe,
     ProgressBarComponent,
+    ViewClientComponent
   ],
   templateUrl: './listclients.component.html',
   styleUrl: './listclients.component.css',

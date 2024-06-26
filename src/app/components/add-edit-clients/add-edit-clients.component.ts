@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientService } from '../../service/client.service';
 import { CommonModule } from '@angular/common';
-import { Clients } from '../../interfaces/clients';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-clients',
@@ -16,7 +16,7 @@ export class AddEditClientsComponent implements OnInit {
   selectedFile: File | undefined;
 
 
-  constructor(private fb: FormBuilder, private clientService: ClientService) {
+  constructor(private fb: FormBuilder, private clientService: ClientService, private router: Router) {
     this.clientForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -66,8 +66,8 @@ export class AddEditClientsComponent implements OnInit {
         if (this.selectedFile) {
           formData.formFile = this.selectedFile;
         }
-
         const res = await this.clientService.createClient(formData);
+        this.router.navigate(['/list']);
         console.log('Cliente creado exitosamente', res.data);
         return res.data;
       } catch (error) {
