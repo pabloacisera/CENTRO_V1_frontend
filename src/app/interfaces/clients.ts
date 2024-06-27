@@ -11,7 +11,8 @@ export interface Clients {
   email: string;
   healthinsurance: string;
   observation?: string;
-  turno?: string,
+  turno?: string;
+  createdAt: string; // Agregamos la propiedad createdAt
 }
 
 export interface Response {

@@ -40,7 +40,7 @@
       </div>
       @if(!loading) {
         @for(client of clientById; track client.id) {
-          <div class="card border-warning mb-3" style="max-width: 20rem;">
+          <div class="card border-warning mb-3">
             <div class="card-header">{{client.name}} {{client.surname}}</div>
             <div class="card-body">
               <p class="card-text">DNI: {{client.socialsecuritynumber}}</p>

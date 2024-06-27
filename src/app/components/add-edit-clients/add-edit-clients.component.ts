@@ -1,46 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ClientService } from '../../service/client.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-edit-clients',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add-edit-clients.component.html',
-  styleUrls: ['./add-edit-clients.component.css']
+  styleUrls: ['./add-edit-clients.component.css'],
 })
 export class AddEditClientsComponent implements OnInit {
   clientForm: FormGroup;
   selectedFile: File | undefined;
+  public editLoading: Boolean = false;
 
-
-  constructor(private fb: FormBuilder, private clientService: ClientService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private clientService: ClientService,
+    private router: Router,
+    private toastr: ToastrService,
+    private adRoute: ActivatedRoute,
+  ) {
     this.clientForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      socialSecurityNumber: ['', Validators.required],
-      dateOfbirth: ['', Validators.required],
+      socialsecuritynumber: ['', Validators.required],
+      dateofbirth: ['', Validators.required],
       age: [{ value: '', disabled: true }],
       address: ['', Validators.required],
       location: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      healthInsurance: ['', Validators.required],
+      healthinsurance: ['', Validators.required],
       observation: [''],
       turno: [''],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   onDateChange(event: any): void {
     const birthDate = new Date(event.target.value);
-    this.clientForm.patchValue({ age: this.calculateAge(birthDate).toString() });
+    this.clientForm.patchValue({
+      age: this.calculateAge(birthDate).toString(),
+    });
   }
 
-  onFileSelected(event:any){
+  onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
@@ -67,6 +83,7 @@ export class AddEditClientsComponent implements OnInit {
           formData.formFile = this.selectedFile;
         }
         const res = await this.clientService.createClient(formData);
+        this.toastr.success('Se ha creado un nuevo cliente', 'Actualizacion de estado');
         this.router.navigate(['/list']);
         console.log('Cliente creado exitosamente', res.data);
         return res.data;
@@ -76,7 +93,5 @@ export class AddEditClientsComponent implements OnInit {
     } else {
       console.error('Formulario inválido. Revise los campos.');
     }
-  }
-
-  
+  } 
 }

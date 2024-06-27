@@ -1,57 +1,73 @@
-@if(isLoading){
-  <div class="spinner">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+<div class="spinner" *ngIf="isLoading">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
   </div>
-  } @if(!isLoading){
-  <div class="titulo">
-    <h1>Listado de Pacientes</h1>
-    <button class="btn btn-primary" routerLink="/add">Nueva ficha</button>
-  </div>
-  
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">
-          <font style="vertical-align: inherit">Id</font>
-        </th>
-        <th scope="col">
-          <font style="vertical-align: inherit">Nombre y Apellido</font>
-        </th>
-        <th scope="col">
-          <font style="vertical-align: inherit">DNI</font>
-        </th>
-        <th scope="col">
-          <font style="vertical-align: inherit">Fecha de Nacimiento</font>
-        </th>
-        <th scope="col">
-          <font style="vertical-align: inherit">Edad</font>
-        </th>
-        <th scope="col">
-          <font style="vertical-align: inherit">Telefono</font>
-        </th>
-        <th scope="col">
-          <font style="vertical-align: inherit">Acciones</font>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(client of listClients; track client.id) {
-        <tr>
-          <td>{{client.id}}</td>
-          <td>{{client.name}} {{client.surname}}</td>
-          <td>{{client.socialsecuritynumber}}</td>
-          <td>{{client.dateofbirth | dateFormat}}</td>
-          <td>{{client.age}}</td>
-          <td>{{client.phone}}</td>
-          <td>
-            <button [routerLink]="['/view', client.id]">Ver</button>
-            <button (click)="deleteClient(client.id!)" >Borrar</button>
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
-  }
-  
+</div>
+
+<div class="titulo" *ngIf="!isLoading">
+  <h1>Listado de Pacientes</h1>
+  <button class="btn btn-primary" [routerLink]="['/add']">Nueva ficha</button>
+</div>
+
+<p *ngIf="listClients.length === 0">No se han encontrado registros en base de datos</p>
+
+<table class="table table-hover" *ngIf="listClients.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">
+        <font style="vertical-align: inherit">Id</font>
+      </th>
+      <th scope="col">
+        <font style="vertical-align: inherit">Nombre y Apellido</font>
+      </th>
+      <th scope="col">
+        <font style="vertical-align: inherit">DNI</font>
+      </th>
+      <th scope="col">
+        <font style="vertical-align: inherit">Fecha de Nacimiento</font>
+      </th>
+      <th scope="col">
+        <font style="vertical-align: inherit">Edad</font>
+      </th>
+      <th scope="col">
+        <font style="vertical-align: inherit">Telefono</font>
+      </th>
+      <th scope="col">
+        <font style="vertical-align: inherit">Creacion</font>
+      </th>
+      <th scope="col">
+        <font style="vertical-align: inherit">Acciones</font>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of paginatedClients; trackBy: trackById">
+      <td>{{ client.id }}</td>
+      <td>{{ client.name }} {{ client.surname }}</td>
+      <td>{{ client.socialsecuritynumber }}</td>
+      <td>{{ client.dateofbirth | dateFormat }}</td>
+      <td>{{ client.age }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.createdAt | createdAtPipe}}</td>
+      <td>
+        <button [routerLink]="['/view', client.id]">Ver</button>
+        <button [routerLink]="['/edit', client.id]">Editar</button>
+        <button (click)="deleteClient(client.id!)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <ul class="pagination pagination-sm">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="changePage(currentPage - 1)">&laquo;</a>
+    </li>
+    <li *ngFor="let page of totalPages; let i = index" class="page-item" [class.active]="currentPage === i + 1">
+      <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages.length">
+      <a class="page-link" (click)="changePage(currentPage + 1)">&raquo;</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,86 @@
+@if(isLoading){
+  <div class="spinner">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}
+@if(!isLoading) {
+  <form [formGroup]="clientForm" (ngSubmit)="updateClient()">
+    <div>
+      <label for="name">Nombre:</label>
+      <input id="name" formControlName="name" type="text">
+    </div>
+  
+    <div>
+      <label for="surname">Apellido:</label>
+      <input id="surname" formControlName="surname" type="text">
+    </div>
+  
+    <div>
+      <label for="ssn">D.N.I:</label>
+      <input id="ssn" formControlName="socialsecuritynumber" type="text">
+    </div>
+  
+    <div>
+      <label for="dob">Fecha de Nacimiento:</label>
+      <input id="dob" formControlName="dateofbirth" type="date" (change)="onDateChange($event)">
+    </div>
+  
+    <div>
+      <label for="age">Edad:</label>
+      <input id="age" formControlName="age" type="text" [attr.disabled]="true">
+    </div>
+  
+    <div>
+      <label for="address">Direccion:</label>
+      <input id="address" formControlName="address" type="text">
+    </div>
+  
+    <div>
+      <label for="location">Ciudad:</label>
+      <input id="location" formControlName="location" type="text">
+    </div>
+  
+    <div>
+      <label for="phone">Telefono:</label>
+      <input id="phone" formControlName="phone" type="text">
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email">
+    </div>
+  
+    <div>
+      <label for="healthinsurance">Obra social:</label>
+      <select id="healthinsurance" formControlName="healthinsurance">
+        <option value="">SELECCIONAR</option>
+        <option value="Iapos">Iapos</option>
+        <option value="PAMI">PAMI</option>
+        <option value="OSECAC">OSECAC</option>
+        <option value="Otra">Otra</option>
+        <!-- Agrega más opciones según sea necesario -->
+      </select>
+    </div>
+  
+    <div>
+      <label for="observation">Observaciones:</label>
+      <input id="observation" formControlName="observation" type="text">
+    </div>
+  
+    <div>
+      <label for="turno">Turno:</label>
+      <input id="turno" formControlName="turno" type="text">
+    </div>
+  
+    <div>
+      <label for="formFile">Subir archivo</label>
+      <input id="formFile" type="file">
+    </div>
+  
+    <button type="submit">Actualizar ficha</button>
+  </form>
+  
+}
+

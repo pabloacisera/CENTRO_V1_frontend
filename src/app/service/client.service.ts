@@ -22,8 +22,12 @@ export class ClientService {
     return axios.get(`${this.apiUrl}client/${id}`);
   }
 
-  updateClient(id: number, data: any) {
-    return axios.put(`${this.apiUrl}client/${id}`, data);
+  updateClient(id: number, data: any): Promise<any> {
+    return axios.patch(`http://localhost:3000/api/v1/client/${id}`, data)
+      .catch(error => {
+        console.error('Error en la solicitud PATCH:', error);
+        throw error; // Re-lanza el error para manejarlo en el componente
+      });
   }
 
   deleteClient(id: number) {
