@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { lastValueFrom } from 'rxjs';
+import { ServicioPostService } from './servicio-post.service';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class NuevaFichaComponent implements OnInit{
   formulario: FormGroup = new FormGroup({});
   public isLoading: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,private servicio: ServicioPostService) {}
 
   ngOnInit(): void {
    this.formulario = this.formBuilder.group({
@@ -28,12 +30,26 @@ export class NuevaFichaComponent implements OnInit{
     phone: ['', Validators.required],
     email: ['', Validators.required],
     healthinsurance: ['', Validators.required],
-    observation:['', Validators.required],
+    observation:[''],
+    turno: ['']
    }) 
   }
 
-  onSubmit(){
-    console.log(this.formulario.value)
+  async onSubmit(){
+    console.log(this.formulario.value);
+    this.isLoading = true;
+    try {
+      const formData = { ...this.formulario.value }; // create a copy of the form data
+      formData.dateofbirth = new Date(formData.dateofbirth); // convert date of birth to Date object
+      formData.age = formData.age.toString(); // convert age to string
+      formData.turno = formData.turno.toString();
+      const res = await this.servicio.crearFicha(formData);
+      console.log(res);
+      this.isLoading = false;
+    } catch (error) {
+      console.log(error);
+      this.isLoading = false;
+    }
   }
 
   calculateAge(birthDate: Date): number {
