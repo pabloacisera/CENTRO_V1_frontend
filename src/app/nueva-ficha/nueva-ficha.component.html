@@ -3,55 +3,56 @@
 }
 @if(!isLoading) {
   <div class="container">
-    <form class="form">
+    <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
       <h2>Nueva Ficha</h2>
       <div class="form-group">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="name" name="name" formControlName="name" required >
       </div>
       <div class="form-group">
         <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required>
+        <input type="text" id="apellido" name="apellido" formControlName="surname" required>
       </div>
       <div class="form-group">
         <label for="dni">DNI:</label>
-        <input type="text" id="dni" name="dni" required>
+        <input type="text" id="dni" name="dni" formControlName="socialsecuritynumber" required>
       </div>
       <div class="form-group">
-        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+        <label for="dateofbirth">
+          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" formControlName="dateofbirth" required (input)="onDateOfBirthInput($any($event.target).value)">
+        </label>
       </div>
       <div class="form-group">
         <label for="edad">Edad:</label>
-        <input type="number" id="edad" name="edad" required>
+        <input type="number" id="edad" name="edad" formControlName="age" required>
       </div>
       <div class="form-group">
         <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required>
+        <input type="tel" id="telefono" name="telefono" formControlName="phone" required>
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" formControlName="email" required>
       </div>
       <div class="form-group">
         <label for="obra_social">Obra Social:</label>
-        <select id="obra_social" name="obra_social">
-          <option value="obra1">Obra Social 1</option>
-          <option value="obra2">Obra Social 2</option>
-          <option value="obra3">Obra Social 3</option>
+        <select id="obra_social" name="obra_social" formControlName="healthinsurance">
+          <option value="IAPOS">IAPOS</option>
+          <option value="PAMI">PAMI</option>
+          <option value="OTRA">OTRA</option>
         </select>
       </div>
       <div class="form-group">
         <label for="direccion">Dirección:</label>
-        <input type="text" id="direccion" name="direccion" required>
+        <input type="text" id="direccion" name="direccion" formControlName="address" required>
       </div>
       <div class="form-group">
         <label for="localidad">Localidad:</label>
-        <input type="text" id="localidad" name="localidad" required>
+        <input type="text" id="localidad" name="localidad" formControlName="location" required>
       </div>
       <div class="form-group">
         <label for="observaciones">Observaciones:</label>
-        <textarea id="observaciones" name="observaciones"></textarea>
+        <textarea id="observaciones" name="observaciones" formControlName="observation"></textarea>
       </div>
       <button type="submit">Guardar</button>
     </form>
