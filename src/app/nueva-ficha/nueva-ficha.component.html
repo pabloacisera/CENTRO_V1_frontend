@@ -1,0 +1,60 @@
+@if(isLoading){
+  <app-spinner></app-spinner>
+}
+@if(!isLoading) {
+  <div class="container">
+    <form class="form">
+      <h2>Nueva Ficha</h2>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+      </div>
+      <div class="form-group">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+      </div>
+      <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" required>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="obra_social">Obra Social:</label>
+        <select id="obra_social" name="obra_social">
+          <option value="obra1">Obra Social 1</option>
+          <option value="obra2">Obra Social 2</option>
+          <option value="obra3">Obra Social 3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+      </div>
+      <div class="form-group">
+        <label for="localidad">Localidad:</label>
+        <input type="text" id="localidad" name="localidad" required>
+      </div>
+      <div class="form-group">
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" name="observaciones"></textarea>
+      </div>
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+  
+}

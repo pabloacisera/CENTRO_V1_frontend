@@ -1,0 +1,55 @@
+.nomenclatura-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineación desde arriba */
+  min-height: 75vh; /* 75% del viewport height */
+  padding: 50px 0; /* Espacio arriba y abajo para separar del borde superior e inferior */
+  margin-top: calc(25vh - 50px); /* Aparecer aproximadamente 1/4 de viewport hacia abajo */
+}
+
+.nomenclatura-table {
+  width: 100%; /* Ocupar todo el ancho del contenedor */
+  border-collapse: collapse; /* Colapsar bordes de celda */
+  margin-top: 20px; /* Espacio superior */
+}
+
+.nomenclatura-table th, .nomenclatura-table td {
+  padding: 8px 12px; /* Espacio interno */
+  border: 1px solid #ccc; /* Borde de celda */
+}
+
+.nomenclatura-table th {
+  background-color: #f2f2f2; /* Fondo gris claro para encabezados */
+  text-align: left; /* Alinear texto a la izquierda */
+  font-weight: bold; /* Negrita para encabezados */
+}
+
+.nomenclatura-table td {
+  text-align: left; /* Alinear texto a la izquierda */
+}
+
+.nomenclatura-search {
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+.nomenclatura-search input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.nomenclatura-search button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.nomenclatura-search button:hover {
+  background-color: #0056b3;
+}

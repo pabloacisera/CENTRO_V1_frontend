@@ -1,0 +1,84 @@
+
+
+/* Estilo para el contenedor principal */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Estilo para la lista */
+.list-container {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.list-container h2 {
+  margin-bottom: 10px;
+}
+
+.list-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.list-container li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-container li:last-child {
+  border-bottom: none;
+}
+
+/* Estilo para la tarjeta */
+.card {
+  flex: 0 0 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h2 {
+  margin-bottom: 20px;
+}
+
+.login-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #2980b9;
+}
+
+.dashboard-component {
+  display: none; /* Oculta todos los componentes por defecto */
+  position: absolute; /* Los posiciona de manera absoluta */
+  top: 0; /* Los coloca en la parte superior del contenedor principal */
+  left: 0; /* Alineados a la izquierda */
+  width: 100%; /* O el ancho que desees ocupar */
+  max-width: 600px; /* Ancho máximo recomendado */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 100; /* Ajusta el orden de apilamiento según necesites */
+}
+
+/* Estilo para mostrar un componente activo */
+.dashboard-component.active {
+  display: block;
+}

@@ -1,0 +1,37 @@
+@if(isLoading){
+  <app-spinner></app-spinner>
+}
+@if(!isLoading) {
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Código</th>
+          <th>Determinación</th>
+          <th>U.B</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí irían los datos dinámicos de la tabla -->
+        <tr>
+          <td>1</td>
+          <td>Código1</td>
+          <td>Determinación1</td>
+          <td>UB1</td>
+          <td>Valor1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Código2</td>
+          <td>Determinación2</td>
+          <td>UB2</td>
+          <td>Valor2</td>
+        </tr>
+        <!-- Repetir según la cantidad de datos -->
+      </tbody>
+    </table>
+  </div>
+  
+}

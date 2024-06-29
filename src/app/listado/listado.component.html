@@ -1,0 +1,39 @@
+@if(isLoading){
+<app-spinner></app-spinner>
+} @if(!isLoading) {
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>DNI</th>
+      <th>Edad</th>
+      <th>Teléfono</th>
+      <th>Email</th>
+      <th>Creación</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aquí se agregarán las filas dinámicamente -->
+    @for(data of dataClient; track data.id) {
+    <tr>
+      <td>{{ data.name }}</td>
+      <td>{{ data.surname }}</td>
+      <td>{{ data.socialsecuritynumber }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.createdAt }}</td>
+      <td>
+        <button class="action-button">Editar</button>
+        <button class="action-button">Eliminar</button>
+      </td>
+    </tr>
+
+    }
+
+    <!-- Otras filas se agregarán de manera dinámica -->
+  </tbody>
+</table>
+}
