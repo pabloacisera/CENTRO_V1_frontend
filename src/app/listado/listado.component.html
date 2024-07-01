@@ -7,6 +7,7 @@
       <th>Nombre</th>
       <th>Apellido</th>
       <th>DNI</th>
+      <th>Fecha de Nacimiento</th>
       <th>Edad</th>
       <th>Teléfono</th>
       <th>Email</th>
@@ -21,13 +22,16 @@
       <td>{{ data.name }}</td>
       <td>{{ data.surname }}</td>
       <td>{{ data.socialsecuritynumber }}</td>
+      <td>{{data.dateofbirth | dateFormat}}</td>
       <td>{{ data.age }}</td>
       <td>{{ data.phone }}</td>
       <td>{{ data.email }}</td>
-      <td>{{ data.createdAt }}</td>
+      <td>{{ data.createdAt | dateFormat }}</td>
       <td>
-        <button class="action-button">Editar</button>
-        <button class="action-button">Eliminar</button>
+        <button class="action-button" (click)="verDetalle(data.id)">ver</button>
+        <button class="action-button" (click)="deleteClient(data.id)">Eliminar</button>
+        <button class="action-button" [routerLink]="['/actualizar', data.id]">Editar</button>
+
       </td>
     </tr>
 

@@ -16,4 +16,8 @@ export class ServicoListaService{
   getAllClients(): Observable<Clientes[]>{
     return this.http.get<Clientes[]>(this.url);
   }
+
+  deleteClientById(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
 }

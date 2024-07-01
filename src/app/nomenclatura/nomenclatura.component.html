@@ -1,37 +1,32 @@
-@if(isLoading){
-  <app-spinner></app-spinner>
-}
-@if(!isLoading) {
-  <div class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Código</th>
-          <th>Determinación</th>
-          <th>U.B</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Aquí irían los datos dinámicos de la tabla -->
-        <tr>
-          <td>1</td>
-          <td>Código1</td>
-          <td>Determinación1</td>
-          <td>UB1</td>
-          <td>Valor1</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Código2</td>
-          <td>Determinación2</td>
-          <td>UB2</td>
-          <td>Valor2</td>
-        </tr>
-        <!-- Repetir según la cantidad de datos -->
-      </tbody>
-    </table>
+<div class="container">
+  <input type="search" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" placeholder="Buscar...">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Determinación</th>
+        <th>U.B</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paginatedData">
+        <td>{{item.codigo}}</td>
+        <td>{{item.determinacion}}</td>
+        <td>{{item.unidadBase}}</td>
+        <td>
+          <button [routerLink]="['/resultado', item.id]">agregar a resultado</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button (click)="prevPage()">Anterior</button>
+    <select [(ngModel)]="rowsPerPage">
+      <option value="15">15 filas por página</option>
+      <option value="30">30 filas por página</option>
+      <option value="45">45 filas por página</option>
+    </select>
+    <button (click)="nextPage()">Siguiente</button>
   </div>
-  
-}
+</div>

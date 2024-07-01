@@ -1,26 +1,32 @@
-@if(isLoading) {
+<div *ngIf="isLoading">
   <app-spinner></app-spinner>
-}
-@if(!isLoading) {
-  <div class="container">
-    <div class="list-container">
-      <h2>Panel de Control</h2>
-      <ul>
-        <li class="clickable-item" routerLink=" ">Principal</li>
-        <li class="clickable-item" routerLink="lista">Listado</li>
-        <li class="clickable-item" routerLink="nueva_ficha">Nueva ficha</li>
-        <li class="clickable-item" routerLink="nomenclatura">Nomenclatura</li>
-        <li class="clickable-item" routerLink="turno">Turnos</li>
+</div>
+<div *ngIf="!isLoading">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Panel de Control</h4>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="/" aria-selected="false" role="tab" tabindex="-1">Principal</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="/lista" aria-selected="false" role="tab" tabindex="-1">Listado</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="/nueva_ficha" aria-selected="false" role="tab" tabindex="-1">Nueva ficha</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="/nomenclatura" aria-selected="false" role="tab" tabindex="-1">Nomenclatura</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="/turno" aria-selected="false" role="tab" tabindex="-1">Turnos</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" routerLink="/resultado" aria-selected="false" role="tab" tabindex="-1">Resultado</a>
+        </li>
       </ul>
-    </div>
-    <div class="card">
-      <h2>Iniciar Sesión</h2>
-      <button class="login-button"routerLink="logear">Logear</button>
-    </div>
   </div>
-  
-}
+</div>
 <div class="dashboard-container">
   <router-outlet></router-outlet>
 </div>
-

@@ -1,0 +1,65 @@
+@if(isLoading){
+  <app-spinner></app-spinner>
+}
+@if(!isLoading) {
+  <div class="container">
+    <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <h2>Nueva Ficha</h2>
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" formControlName="name" required >
+      </div>
+      <div class="form-group">
+        <label for="surname">Apellido:</label>
+        <input type="text" id="surname" name="surname" formControlName="surname" required>
+      </div>
+      <div class="form-group">
+        <label for="socialsecuritynumber">DNI:</label>
+        <input type="text" id="socialsecuritynumber" name="socialsecuritynumber" formControlName="socialsecuritynumber" required>
+      </div>
+      <div class="form-group">
+        <label for="dateofbirth">
+          <input type="date" id="dateofbirth" name="dateofbirth" formControlName="dateofbirth" required (input)="onDateOfBirthInput($any($event.target).value)">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="age">Edad:</label>
+        <input type="number" id="age" name="age" formControlName="age" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="phone" name="phone" formControlName="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" formControlName="email" required>
+      </div>
+      <div class="form-group">
+        <label for="healthinsurance">Obra Social:</label>
+        <select id="healthinsurance" name="healthinsurance" formControlName="healthinsurance">
+          <option value="IAPOS">IAPOS</option>
+          <option value="PAMI">PAMI</option>
+          <option value="OTRA">OTRA</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="address">Dirección:</label>
+        <input type="text" id="address" name="address" formControlName="address" required>
+      </div>
+      <div class="form-group">
+        <label for="location">Localidad:</label>
+        <input type="text" id="location" name="location" formControlName="location" required>
+      </div>
+      <div class="form-group">
+        <label for="observation">Observaciones:</label>
+        <textarea id="observation" name="observation" formControlName="observation"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="turno">Turno:</label>
+        <input type="text" id="turno" name="turno" formControlName="turno">
+      </div>
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </div>
+  
+}

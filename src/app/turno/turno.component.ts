@@ -9,11 +9,6 @@ import { SpinnerComponent } from '../spinner/spinner.component';
   styleUrl: './turno.component.css'
 })
 export class TurnoComponent {
-  public isLoading: boolean = true;
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
-  }
+  ngOnInit() {}
 }

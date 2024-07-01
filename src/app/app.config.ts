@@ -5,6 +5,8 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { DateFormatPipe } from './date-format.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 export const appConfig: ApplicationConfig = {
@@ -13,6 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(withInterceptorsFromDi()),
+    importProvidersFrom(FormsModule),
+    importProvidersFrom(DateFormatPipe),
     importProvidersFrom(RouterModule),
     importProvidersFrom(BrowserModule),
     importProvidersFrom(BrowserAnimationsModule),

@@ -1,0 +1,23 @@
+<div *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+
+<div *ngIf="!isLoading && dataById">
+  <div class="card">
+    <div class="card-header">
+      <h2>Detalles de paciente</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>Nombre y Apellido:</strong>{{ dataById.name }} {{ dataById.surname }}</p>
+      <p><strong>DNI:</strong>{{ dataById.socialsecuritynumber }}</p>
+      <p><strong>Edad:</strong>{{ dataById.age }}</p>
+      <p><strong>Fecha de nacimiento:</strong>{{ dataById.dateofbirth | dateFormat}}</p>
+      <p><strong>Telefono:</strong>{{ dataById.phone }}</p>
+      <p><strong>Email:</strong>{{ dataById.email }}</p>
+      <p><strong>Obra Social:</strong>{{ dataById.healthinsurance }}</p>
+      <p><strong>Direccion:</strong>{{ dataById.address }}</p>
+      <p><strong>Localidad:</strong>{{ dataById.location }}</p>
+      <p><strong>Observacion:</strong>{{ dataById.observation }}</p>
+    </div>
+  </div>
+</div>
