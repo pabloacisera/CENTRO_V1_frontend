@@ -1,1 +1,52 @@
-<p>Aqui se presentaran los resultados</p>
+<div class="container">
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="inputValue"
+      placeholder="Buscar por código o nombre"
+    />
+    <div class="search-options">
+      <label>
+        <input type="checkbox" [(ngModel)]="codigoChecked" /> Código
+      </label>
+      <label>
+        <input type="checkbox" [(ngModel)]="determinacionChecked" />
+        Determinacion
+      </label>
+    </div>
+    <button (click)="search()">agregar</button>
+  </div>
+</div>
+<div class="ub-input">
+  <input
+    type="number"
+    [(ngModel)]="ubValue"
+    placeholder="Valor de U.B"
+  />
+  <button (click)="fixUbValue()" *ngIf="!ubValueFixed">Fijar</button>
+  <button (click)="modifyUbValue()" *ngIf="ubValueFixed">Modificar</button>
+</div>
+<div class="results">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Determinación</th>
+        <th>U.B</th>
+        <th>Valor</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of resultados; trackBy: trackByCodigo">
+        <td>{{ data.codigo }}</td>
+        <td>{{ data.determinacion }}</td>
+        <td>{{ data.unidadBase }}</td>
+        <td>{{ data.valor === null ? 'No disponible' : data.valor }}</td>
+        <td>
+          <button>eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
