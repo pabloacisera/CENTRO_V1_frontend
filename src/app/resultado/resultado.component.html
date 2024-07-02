@@ -45,10 +45,16 @@
         <td>{{ data.codigo }}</td>
         <td>{{ data.determinacion }}</td>
         <td>{{ data.unidadBase }}</td>
-        <td>{{ data.valor === null ? 'No disponible' : data.valor }}</td>
+        <td>{{ data.valorCalculado === null ? 'No disponible' : data.valorCalculado }}</td>
         <td>
           <button (click)="eliminar(data.codigo)">Eliminar</button>
         </td>
+      </tr>
+      <tr>
+        <td><strong>Resultados</strong></td>
+        <td></td>
+        <td><strong>{{ sumUbValues }}</strong></td>
+        <td><strong>{{ sumValorValues }}</strong></td>
       </tr>
     </tbody>
   </table>

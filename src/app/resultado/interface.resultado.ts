@@ -4,6 +4,7 @@ export interface Resultado {
   determinacion: string;
   unidadBase:    number;
   valor:         null | number;
+  valorCalculado: number | null;
 }
 
 
