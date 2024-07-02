@@ -14,17 +14,20 @@
         Determinacion
       </label>
     </div>
-    <button (click)="search()">agregar</button>
+    <button (click)="search()">Agregar</button>
   </div>
 </div>
-<div class="ub-input">
+<div class="ub-input" *ngIf="!ubValueFixed">
   <input
     type="number"
     [(ngModel)]="ubValue"
     placeholder="Valor de U.B"
   />
-  <button (click)="fixUbValue()" *ngIf="!ubValueFixed">Fijar</button>
-  <button (click)="modifyUbValue()" *ngIf="ubValueFixed">Modificar</button>
+  <button (click)="fixUbValue()">Fijar</button>
+</div>
+<div class="ub-fixed" *ngIf="ubValueFixed">
+  <p>Valor Actual de Unidad Base: {{ ubValue }}</p>
+  <button (click)="modifyUbValue()">Modificar</button>
 </div>
 <div class="results">
   <table>
@@ -44,9 +47,10 @@
         <td>{{ data.unidadBase }}</td>
         <td>{{ data.valor === null ? 'No disponible' : data.valor }}</td>
         <td>
-          <button>eliminar</button>
+          <button (click)="eliminar(data.codigo)">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
+  <button (click)="guardar()">Guardar</button>
 </div>
